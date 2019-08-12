@@ -9,7 +9,30 @@ class MyClass extends StatefulWidget {
 }
 
 class _MyClassState extends State<MyClass> {
-  List  
+  List myListData;
+  
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+        stream: streamData,
+        builder: (context, snap) { 
+          //TODO: implement builder
+          
+          return Scaffold(
+            body: (
+              child: Container(
+                child: RaisedButton(
+                      child: new Text("Search"),
+                      onPressed: () {
+                         showSearch(context: context, delegate: Search(myListData));
+                      }
+                 )
+              )
+            )
+          );
+        }
+    );
+  }
 }
 
 class Search extends SearchDelegate<String> {
